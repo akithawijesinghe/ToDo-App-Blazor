@@ -34,6 +34,8 @@ a, .btn-link {
     color: red;
 }
 
+
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -61,4 +63,41 @@ a, .btn-link {
 
     .blazor-error-boundary::after {
         content: "An error has occurred."
+    }
+
+.custom-input {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.custom-button {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.custom-progress-bar {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.custom-checkbox {
+    transform: scale(1.5);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+    .custom-checkbox:checked {
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+.custom-task-item {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+    .custom-task-item:hover {
+        background-color: rgba(0, 0, 0, 0.1);
     }

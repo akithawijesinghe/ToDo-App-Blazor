@@ -1,14 +1,16 @@
 ﻿@page "/ToDo"
 <h3>@HeaderName</h3>
 
+<br />
+
 <EditForm Model="task" OnValidSubmit="AddTask">
     <div class="row">
         <!-- Set the width of the column to auto to keep it minimal -->
         <div class="col-auto d-flex">
             <!-- Set a specific width for the input field -->
-            <input class="form-control me-2" type="text" @bind-value="task.TaskName" style="width: 500px;" />
+            <input class="form-control me-2 custom-input" type="text" @bind-value="task.TaskName" style="width: 500px;" />
             <!-- Set a specific width for the button -->
-            <button class="btn btn-outline-primary" style="width: 100px;">Add Task</button>
+            <button class="btn btn-outline-primary custom-button" style="width: 100px;">Add Task</button>
         </div>
     </div>
 </EditForm>
@@ -16,36 +18,30 @@
 <!-- Wrapper to align both the form and progress bar to the left -->
 <div class="row mt-2">
     <div class="col-auto">
-        <div class="progress my-2" style="width: 600px; height:30px;" >
-            <div class="progress-bar" role="progressbar" style="width:@(percentageCompleted)%" aria-valuemax="100" aria-valuemin="0">
+        <div class="progress my-2" style="width: 600px; height: 30px;">
+            <div class="progress-bar custom-progress-bar" role="progressbar" style="width:@(percentageCompleted)%" aria-valuemax="100" aria-valuemin="0">
                 @(percentageCompleted)%
             </div>
         </div>
     </div>
 </div>
 
-
-
 <ul class="list-group my-2">
     @foreach (var taskitem in taskList)
     {
-        if (taskitem.IsComplete)
-        {
-            <!-- Task is Completed: Gray color -->
-            <li class="list-group-item list-group-item-secondary mx-1" @onclick="(() => taskitem.IsComplete = !taskitem.IsComplete)">
+        <li class="list-group-item mx-1 d-flex align-items-center custom-task-item" style="background-color: @(taskitem.IsComplete ? "gray" : "lightblue");" @onclick="(() => taskitem.IsComplete = !taskitem.IsComplete)">
+            <input type="checkbox" class="me-2 custom-checkbox" @bind="taskitem.IsComplete" @onclick:stopPropagation="true" />
+            @if (taskitem.IsComplete)
+            {
                 <del>@taskitem.TaskName</del>
-            </li>
-        }
-        else
-        {
-            <!-- Task Uncomplete: Blue color -->
-            <li class="list-group-item list-group-item-primary mx-1" @onclick="(() => taskitem.IsComplete = !taskitem.IsComplete)">
+            }
+            else
+            {
                 @taskitem.TaskName
-            </li>
-        }
+            }
+        </li>
     }
 </ul>
-
 
 @code {
     protected List<TaskModel> taskList = new List<TaskModel>();
@@ -53,7 +49,7 @@
 
     protected override void OnInitialized()
     {
-        if(HeaderName == "")
+        if (HeaderName == "")
         {
             HeaderName = "ToDo";
         }
@@ -78,5 +74,4 @@
             return taskList.Count > 0 ? (taskList.Count(x => x.IsComplete) * 100 / taskList.Count) : 0;
         }
     }
-
 }

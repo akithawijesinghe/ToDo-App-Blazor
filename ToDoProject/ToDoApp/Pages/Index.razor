@@ -1,4 +1,16 @@
 ﻿@page "/"
+@* Add the style for the body directly within the component *@
+
+<style>
+    body {
+        background-color: LightSteelBlue;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Set your desired font family */
+        margin: 0; /* Reset default margin */
+        padding: 0; /* Reset default padding */
+    }
+</style>
+
+<br />
 
 <div class="row">
     <div class="d-flex justify-content-center">
@@ -9,12 +21,13 @@
     </div>
 </div>
 
+<br />
+
 <div class="row">
     <div class="d-flex justify-content-center">
         <div class="col-6">
-            <ToDoApp.Pages.Components.ToDo HeaderName="Mothly Tasks">
+            <ToDoApp.Pages.Components.ToDo HeaderName="Monthly Tasks">
             </ToDoApp.Pages.Components.ToDo>
         </div>
     </div>
-
 </div>
