@@ -5,17 +5,17 @@
 
 <EditForm Model="task" OnValidSubmit="AddTask">
     <div class="row">
-        <!-- Set the width of the column to auto to keep it minimal -->
+        
         <div class="col-auto d-flex">
-            <!-- Set a specific width for the input field -->
+            
             <input class="form-control me-2 custom-input" type="text" @bind-value="task.TaskName" style="width: 500px;" />
-            <!-- Set a specific width for the button -->
+            
             <button class="btn btn-outline-primary custom-button" style="width: 100px;">Add Task</button>
         </div>
     </div>
 </EditForm>
 
-<!-- Wrapper to align both the form and progress bar to the left -->
+
 <div class="row mt-2">
     <div class="col-auto">
         <div class="progress my-2" style="width: 600px; height: 30px;">
